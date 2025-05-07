@@ -4,6 +4,34 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
   }
+
+  .top-right-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .circle-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+  .circle-button:hover {
+    background-color: #f0f0f0;
+  }
+  
   
   body, html {
     height: 100%;
@@ -30,14 +58,14 @@
     position: absolute;
     left: 0;
     top: 100px;
-    background: rgba(255, 255, 255, 0.05);
+    background: hsla(0, 44%, 30%, 0.4);
   }
   
   .player-2 {
     position: absolute;
     right: 0;
     top: 100px;
-    background: rgba(255, 255, 255, 0.05);
+    background:hsla(348, 58%, 53%, 0.6);
   }
   
   .score {
@@ -45,14 +73,27 @@
     color: #f47c7c;
   }
   
-  .current-box {
+  .current-box-1 {
     margin-top: 1rem;
-    background-color: #e64767;
+    background-color: hsla(0, 44%, 30%, 0.6);
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .current-box-2 {
+    margin-top: 1rem;
+    background-color: hsla(348, 55%, 43%, 0.6);
     padding: 1rem;
     border-radius: 8px;
   }
   
-  .current-box p {
+  .current-box-1 p {
+    margin: 5px;
+    color: white;
+    font-weight: bold;
+  }
+
+  .current-box-2 p {
     margin: 5px;
     color: white;
     font-weight: bold;
