@@ -1,150 +1,70 @@
 // Hämta spelarelement
-const player0El = document.querySelector('.player-1');
-const player1El = document.querySelector('.player-2');
-const score0El = player0El.querySelector('.score');
-const score1El = player1El.querySelector('.score');
-const current0El = player0El.querySelector('.current-score');
-const current1El = player1El.querySelector('.current-score');
+const player0El = document.querySelector('.player-1'); // Referens till spelare 1:s DOM-element
+const player1El = document.querySelector('.player-2'); // Referens till spelare 2:s DOM-element
+const score0El = player0El.querySelector('.score'); // Totala poäng för spelare 1
+const score1El = player1El.querySelector('.score'); // Totala poäng för spelare 2
+const current0El = player0El.querySelector('.current-score'); // Nuvarande rundpoäng för spelare 1
+const current1El = player1El.querySelector('.current-score'); // Nuvarande rundpoäng för spelare 2
 
 // Hämta knappar och tärningsbild
-const btnRoll = document.querySelector('.controls .btn:nth-child(1)');
-const btnHold = document.querySelector('.controls .btn:nth-child(2)');
-const btnNew = document.querySelector('.btn.new-game');
-const diceEl = document.querySelector('.dice');
+const btnRoll = document.querySelector('.controls .btn:nth-child(1)'); // Rulla-tärning-knappen
+const btnHold = document.querySelector('.controls .btn:nth-child(2)'); // Håll-poäng-knappen
+const btnNew = document.querySelector('.btn.new-game'); // Nytt-spel-knappen
+const diceEl = document.querySelector('.dice'); // Tärningsbilden i spelet
 
 // Startar eller återställer spelet
 function initGame() {
-  scores = [0, 0];        // Totala poäng för spelarna
-  currentScore = 0;       // Poäng för aktiv spelares omgång
-  activePlayer = 0;       // 0 = Player 1, 1 = Player 2
-  playing = true;
+  scores = [0, 0];        // Nollställ totala poäng för båda spelarna
+  currentScore = 0;       // Nollställ rundpoängen
+  activePlayer = 0;       // Starta med spelare 1
+  playing = true;         // Sätt spelet till aktivt läge
 
-  // Nollställ visning
-  score0El.textContent = 0;
-  score1El.textContent = 0;
-  current0El.textContent = 0;
-  current1El.textContent = 0;
+  // Nollställ visning av poäng
+  score0El.textContent = 0; // Visar 0 som totala poäng för spelare 1
+  score1El.textContent = 0; // Visar 0 som totala poäng för spelare 2
+  current0El.textContent = 0; // Visar 0 som rundpoäng för spelare 1
+  current1El.textContent = 0; // Visar 0 som rundpoäng för spelare 2
 
-  // Återställ stilar
+  // Ta bort vinnarklass från tidigare vinnare om någon
   player0El.classList.remove('winner');
   player1El.classList.remove('winner');
+  
+  // Gör spelare 1 aktiv och spelare 2 inaktiv
   player0El.classList.add('active');
   player1El.classList.remove('active');
 
-  // Göm tärningen
+  // Göm tärningsbilden
   diceEl.style.display = 'none';
 
-  // Aktivera knappar
+  // Aktivera knapparna igen
   btnRoll.disabled = false;
   btnHold.disabled = false;
 }
 
 // Byter spelare
 function switchPlayer() {
-  // Nollställ rundpoäng i UI
+  // Nollställ rundpoängen i gränssnittet för den aktiva spelaren
   if (activePlayer === 0) {
     current0El.textContent = 0;
   } else {
     current1El.textContent = 0;
   }
 
-  currentScore = 0;
+  currentScore = 0; // Nollställ rundpoäng
 
-  // Växla spelare
+  // Växla till andra spelaren
   activePlayer = activePlayer === 0 ? 1 : 0;
-  player0El.classList.toggle('active');
-  player1El.classList.toggle('active');
-}
 
-// Rulla tärning
-btnRoll.addEventListener('click', function () {
-  if (!playing) return;
-
-  // Slumpa tal mellan 1–6
-  const dice = Math.trunc(Math.random() * 6) + 1;
-
-  // Visa rätt tärningsbild
-  diceEl.style.display = 'block';
-  diceEl.src = `side${dice}.png`; // Byt bild beroende på slaget
-
-  // Om 1 → byt spelare
-  if (dice === 1) {
-    switchPlayer();
-  } else {
-    // Lägg till i rundpoäng
-    currentScore += dice;
-    if (activePlayer === 0) {
-      current0El.textContent = currentScore;
-    } else {
-      current1El.textContent = currentScore;
-    }
-  }
-});
-
-// Håll poäng
-btnHold.addEventListener('click', function () {
-  if (!playing) return;
-
-  // Lägg till rundpoäng till totala poäng
-  scores[activePlayer] += currentScore;
+  // Visuellt markera vilken spelare som är aktiv
   if (activePlayer === 0) {
-    score0El.textContent = scores[activePlayer];
+    player0El.classList.add('active-player');
+    player0El.classList.remove('inactive-player');
+    player1El.classList.remove('active-player');
+    player1El.classList.add('inactive-player');
   } else {
-    score1El.textContent = scores[activePlayer];
+    player1El.classList.add('active-player');
+    player1El.classList.remove('inactive-player');
+    player0El.classList.remove('active-player');
+    player0El.classList.add('inactive-player');
   }
-
-  // Kontrollera vinst
-  if (scores[activePlayer] >= 50) {
-    playing = false;
-    document.querySelector(`.player-${activePlayer + 1}`).classList.add('winner');
-
-    // Inaktivera knappar
-    btnRoll.disabled = true;
-    btnHold.disabled = true;
-  } else {
-    switchPlayer();
-  }
-});
-
-// Nytt spel
-btnNew.addEventListener('click', initGame); 
-
-// Spelets tillstånd
-let scores, currentScore, activePlayer, playing;
-
-function switchPlayer() {
-    // Nollställ rundpoäng i UI
-    if (activePlayer === 0) {
-      current0El.textContent = 0;
-    } else {
-      current1El.textContent = 0;
-    }
-  
-    currentScore = 0;
-  
-    // Växla spelare
-    activePlayer = activePlayer === 0 ? 1 : 0;
-  
-    // Visuell växling av färger
-    if (activePlayer === 0) {
-      player0El.classList.add('active-player');
-      player0El.classList.remove('inactive-player');
-      player1El.classList.remove('active-player');
-      player1El.classList.add('inactive-player');
-    } else {
-      player1El.classList.add('active-player');
-      player1El.classList.remove('inactive-player');
-      player0El.classList.remove('active-player');
-      player0El.classList.add('inactive-player');
-    }
-  }
-
-player0El.classList.add('active-player');
-player0El.classList.remove('inactive-player');
-player1El.classList.add('inactive-player');
-player1El.classList.remove('active-player');
-
-
-// Starta spelet
-initGame();
-  
+}

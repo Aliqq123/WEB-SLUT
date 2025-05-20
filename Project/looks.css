@@ -1,144 +1,53 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-
-  .top-right-buttons {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    gap: 10px;
-  }
-  
-  .circle-button {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: white;
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-  }
-  
-  .circle-button:hover {
-    background-color: #f0f0f0;
-  }
-  
-  
-  body, html {
-    height: 100%;
-  }
-  
-  .game-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: linear-gradient(to right, #d84d4d, #b452a5);
-    position: relative;
-  }
-  
-  .player {
-    width: 50%;
-    padding: 2rem;
-    color: #fff;
-    text-align: center;
-  }
-  
-  .player-1 {
-    position: absolute;
-    left: 0;
-    top: 100px;
-    background: hsla(0, 44%, 30%, 0.4);
-  }
-  
-  .player-2 {
-    position: absolute;
-    right: 0;
-    top: 100px;
-    background:hsla(348, 58%, 53%, 0.6);
-  }
-  
-  .score {
-    font-size: 60px;
-    color: #f47c7c;
-  }
-  
-  .current-box-1 {
-    margin-top: 1rem;
-    background-color: hsla(0, 44%, 30%, 0.6);
-    padding: 1rem;
-    border-radius: 8px;
-  }
-
-  .current-box-2 {
-    margin-top: 1rem;
-    background-color: hsla(348, 55%, 43%, 0.6);
-    padding: 1rem;
-    border-radius: 8px;
-  }
-  
-  .current-box-1 p {
-    margin: 5px;
-    color: white;
-    font-weight: bold;
-  }
-
-  .current-box-2 p {
-    margin: 5px;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .controls {
-    position: absolute;
-    bottom: 100px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .btn {
-    padding: 10px 20px;
-    border: none;
-    background-color: #fff;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .new-game {
-    position: absolute;
-    top: 20px;
-  }
-  
-  .dice {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120px;
-    height: 120px;
-    z-index: 10;
-  }
-
-  /* Aktiv spelare: stark färg */
-.active-player {
-  background-color: hsla(0, 44%, 30%, 0.6) !important;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-/* Inaktiv spelare: svagare färg */
-.inactive-player {
-  background-color: hsla(348, 55%, 43%, 0.6) !important;
+body, html {
+  height: 100%;
+  background-color: #f4f4f4;
 }
 
-  
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #e0e0e0;
+}
+
+header h1 {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 2rem;
+}
+
+.players {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.player-card {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 150px;
+}
+
+.player-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.score {
+  font-size: 2rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
