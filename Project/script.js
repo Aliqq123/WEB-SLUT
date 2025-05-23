@@ -20,6 +20,7 @@ let currentScore = 0;
 let activePlayer = 0; // 0 = spelare 1, 1 = spelare 2
 let gameRunning = true;
 
+//Arsalans
 // Funktion för att starta om spelet
 function startGame() {
   totalScores = [0, 0];
@@ -38,25 +39,6 @@ function startGame() {
   player2.classList.remove('active-player');
   player1.classList.remove('winner');
   player2.classList.remove('winner');
-}
-
-// Funktion för att byta spelare
-function changePlayer() {
-  // Nollställ rundpoäng
-  if (activePlayer === 0) {
-    current1.textContent = '0';
-  } else {
-    current2.textContent = '0';
-  }
-
-  currentScore = 0;
-
-  // Växla spelare
-  activePlayer = activePlayer === 0 ? 1 : 0;
-
-  // Byt klass för att visa vem som är aktiv
-  player1.classList.toggle('active-player');
-  player2.classList.toggle('active-player');
 }
 
 // När man klickar på "ROLL"
@@ -81,6 +63,28 @@ rollButton.addEventListener('click', function () {
     }
   }
 });
+
+
+
+//Ensars
+// Funktion för att byta spelare
+function changePlayer() {
+  // Nollställ rundpoäng
+  if (activePlayer === 0) {
+    current1.textContent = '0';
+  } else {
+    current2.textContent = '0';
+  }
+
+  currentScore = 0;
+
+  // Växla spelare
+  activePlayer = activePlayer === 0 ? 1 : 0;
+
+  // Byt klass för att visa vem som är aktiv
+  player1.classList.toggle('active-player');
+  player2.classList.toggle('active-player');
+}
 
 // När man klickar på "HOLD"
 holdButton.addEventListener('click', function () {
