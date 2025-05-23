@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dice Duel</title>
+  <link rel="stylesheet" href="looks.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="game-container">
+    <header>
+      <h1>🎲 DICE DUEL</h1>
+    </header>
+
+    <div class="players">
+      <div class="player-card player-1">
+        <h2>PLAYER 1</h2>
+        <p class="score">0</p>
+        <div class="current-box">
+          <p>CURRENT</p>
+          <p class="current-score">0</p>
+        </div>
+      </div>
+
+      <img src="side1.png" alt="Dice" class="dice" style="display: none;" />
+
+      <div class="player-card player-2">
+        <h2>PLAYER 2</h2>
+        <p class="score">0</p>
+        <div class="current-box">
+          <p>CURRENT</p>
+          <p class="current-score">0</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="btn">🎲 ROLL</button>
+      <button class="btn">📥 HOLD</button>
+      <button class="btn new-game">🔄 NEW GAME</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
