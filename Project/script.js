@@ -35,7 +35,7 @@ function startGame() {
 
   dice.style.display = 'none';
 
-  player1.classList.add('active-player');
+  player1.classList.add('active-player'); 
   player2.classList.remove('active-player');
   player1.classList.remove('winner');
   player2.classList.remove('winner');
